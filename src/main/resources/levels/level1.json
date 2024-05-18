@@ -1,0 +1,15 @@
+{
+  "spawnX": 50,
+  "spawnY": 50,
+  "enemies": [
+    {"x": 200, "y": 200, "movementStrategy" : "HorizontalMovementStrategy"},
+    {"x": 300, "y": 300, "movementStrategy" : "VerticalMovementStrategy"}
+  ],
+  "walls": [
+    {"x": 50, "y": 50, "width": 10, "height": 10},
+    {"x": 150, "y": 150, "width": 10, "height": 10}
+  ],
+  "coins": [
+    {"x": 100, "y": 100}
+  ]
+}
