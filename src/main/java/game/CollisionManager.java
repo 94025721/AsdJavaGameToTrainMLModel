@@ -1,19 +1,20 @@
+package game;
+
 import entities.*;
 
-import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import settings.Settings;
 
 public class CollisionManager {
 
     public void handlePlayerMovement(Player player, Level currentLevel) {
         player.move();
-        for (Wall wall : currentLevel.getWalls()) {
-            if (player.getBounds().intersects(wall.getBounds())) {
-                player.undoMove();
-            }
-        }
+        currentLevel.getWalls().stream()
+                .filter(wall -> player.getBounds().intersects(wall.getBounds()))
+                .findFirst()
+                .ifPresent(wall -> player.undoMove());
     }
 
     public void handleEnemyMovement(Player player, Level currentLevel) {
@@ -22,15 +23,14 @@ public class CollisionManager {
         List<Rectangle> returnObjects = new ArrayList<>();
         for (Enemy enemy : currentLevel.getEnemies()) {
             enemy.move();
-            if (checkCollisionWithWalls(enemy, currentLevel.getWalls())) {
+            if (checkCollisionWithWalls(enemy, currentLevel.getWalls()) ||
+                    checkCollisionWithEnemies(enemy, enemyQuadTree, returnObjects) ||
+                    enemy.getBounds().intersects(player.getBounds())) {
                 enemy.undoMove();
-            }
-            if (checkCollisionWithEnemies(enemy, enemyQuadTree, returnObjects)) {
-                enemy.undoMove();
-            }
-            if (enemy.getBounds().intersects(player.getBounds())) {
-                handlePlayerDeath(player, currentLevel);
-                break;
+                if (enemy.getBounds().intersects(player.getBounds())) {
+                    handlePlayerDeath(player, currentLevel);
+                    break;
+                }
             }
         }
     }
@@ -43,48 +43,30 @@ public class CollisionManager {
         for (Coin coin : currentLevel.getCoins()) {
             returnObjects.clear();
             coinQuadTree.retrieve(returnObjects, coin.getBounds());
-
-            for (Rectangle rect : returnObjects) {
-                if (rect.intersects(player.getBounds()) && rect.equals(coin.getBounds())) {
-                    player.incrementCoinsCollected();
-                    coinsToRemove.add(coin);
-                    break;
-                }
+            if (returnObjects.stream().anyMatch(rect -> rect.intersects(player.getBounds()) && rect.equals(coin.getBounds()))) {
+                player.incrementCoinsCollected();
+                coinsToRemove.add(coin);
             }
         }
         currentLevel.getCoins().removeAll(coinsToRemove);
     }
 
-    private QuadTree buildQuadTree(ArrayList<? extends Entity> entities, ArrayList<Wall> walls) {
+    private QuadTree buildQuadTree(List<? extends Entity> entities, List<Wall> walls) {
         QuadTree quadTree = new QuadTree(0, new Rectangle(0, 0, Settings.getInstance().getGameWidth(), Settings.getInstance().getGameHeight()));
-        for (Entity entity : entities) {
-            quadTree.insert(entity.getBounds());
-        }
+        entities.forEach(entity -> quadTree.insert(entity.getBounds()));
         if (walls != null) {
-            for (Wall wall : walls) {
-                quadTree.insert(wall.getBounds());
-            }
+            walls.forEach(wall -> quadTree.insert(wall.getBounds()));
         }
         return quadTree;
     }
 
     private boolean checkCollisionWithWalls(Entity entity, List<Wall> walls) {
-        for (Wall wall : walls) {
-            if (entity.getBounds().intersects(wall.getBounds())) {
-                return true;
-            }
-        }
-        return false;
+        return walls.stream().anyMatch(wall -> entity.getBounds().intersects(wall.getBounds()));
     }
 
     private boolean checkCollisionWithEnemies(Enemy enemy, QuadTree enemyQuadTree, List<Rectangle> returnObjects) {
         enemyQuadTree.retrieve(returnObjects, enemy.getBounds());
-        for (Rectangle rect : returnObjects) {
-            if (!rect.equals(enemy.getBounds()) && rect.intersects(enemy.getBounds())) {
-                return true;
-            }
-        }
-        return false;
+        return returnObjects.stream().anyMatch(rect -> !rect.equals(enemy.getBounds()) && rect.intersects(enemy.getBounds()));
     }
 
     private void handlePlayerDeath(Player player, Level currentLevel) {

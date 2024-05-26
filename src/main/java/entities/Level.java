@@ -1,7 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
-import Settings.Settings;
+import settings.Settings;
 import lombok.Getter;
 import lombok.Setter;
 

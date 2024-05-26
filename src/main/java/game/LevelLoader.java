@@ -1,3 +1,5 @@
+package game;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.Coin;
 import entities.Enemy;

@@ -1,10 +1,12 @@
+package game;
+
 import javax.swing.*;
 
 public class Main {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            JFrame frame = new JFrame("Simple 2D Game");
+            JFrame frame = new JFrame("Simple 2D game.Game");
             GamePanel gamePanel = new GamePanel();
             Game game = new Game(gamePanel);
             gamePanel.setGame(game);

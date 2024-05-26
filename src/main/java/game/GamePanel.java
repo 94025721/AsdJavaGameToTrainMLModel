@@ -1,4 +1,6 @@
-import Settings.Settings;
+package game;
+
+import settings.Settings;
 import entities.Coin;
 import entities.Enemy;
 import entities.Player;
@@ -13,16 +15,11 @@ import java.util.ArrayList;
 public class GamePanel extends JPanel implements GameObserver {
     private Game game;
 
-    public GamePanel(Game game) {
-        this.game = game;
+    public GamePanel() {
         setPreferredSize(new Dimension(Settings.getInstance().getGameWidth(), Settings.getInstance().getGameHeight()));
         setBackground(Color.WHITE);
         setFocusable(true);
         requestFocusInWindow();
-    }
-
-    public GamePanel() {
-        this(null);
     }
 
     @Override
@@ -60,5 +57,4 @@ public class GamePanel extends JPanel implements GameObserver {
     public void update() {
         repaint();
     }
-
 }

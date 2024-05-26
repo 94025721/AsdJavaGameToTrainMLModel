@@ -1,3 +1,5 @@
+package game;
+
 import entities.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,23 +12,20 @@ import javax.swing.*;
 
 public class Game implements ActionListener {
 
-    private Timer timer;
+    private final Timer timer;
+    private final CollisionManager collisionManager;
+    private final GameObserver gameObserver;
+
+    private final ArrayList<Level> levels = new ArrayList<>();
+    private int currentLevelIndex;
 
     @Getter
-    private Player player;
-
-    private GameObserver gameObserver;
-
-    private ArrayList<Level> levels;
-    private int currentLevelIndex;
+    private final Player player;
 
     @Setter @Getter
     private GameState gameState;
 
-    private final CollisionManager collisionManager;
-
     public Game(GameObserver gameObserver) {
-        this.levels = new ArrayList<>();
         this.gameObserver = gameObserver;
         this.player = new Player();
         this.currentLevelIndex = 0;
@@ -34,16 +33,14 @@ public class Game implements ActionListener {
         this.collisionManager = new CollisionManager();
         setupGame();
 
-        this.timer = new Timer(60, this);
+        this.timer = new Timer(16, this);
         this.timer.start();
     }
 
     private void setupGame() {
         try {
-            List<Level> levels = LevelLoader.loadAll();
-            for (Level level : levels) {
-                addLevel(level);
-            }
+            List<Level> loadedLevels = LevelLoader.loadAll();
+            levels.addAll(loadedLevels);
             if (!levels.isEmpty()) {
                 player.respawn(levels.get(currentLevelIndex).getSpawnX(), levels.get(currentLevelIndex).getSpawnY());
             }
@@ -58,6 +55,8 @@ public class Game implements ActionListener {
             collisionManager.handleEnemyMovement(player, levels.get(currentLevelIndex));
             collisionManager.handleCoinCollection(player, levels.get(currentLevelIndex));
             gameObserver.update();
+        } else if (gameState == GameState.GAME_OVER) {
+            timer.stop();
         }
     }
 
@@ -74,7 +73,6 @@ public class Game implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         update();
-        gameObserver.update();
     }
 
     public ArrayList<Enemy> getEnemies() {

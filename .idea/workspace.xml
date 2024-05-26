@@ -5,33 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ebadf4ed-f5e3-4e2b-b0cc-c514db72fb86" name="Changes" comment="Initial start of the game. Movement of players seem to be laggy. Might has something to do with the update timer of 60 ms. Thought it was performance so I build a Quad Tree for collision; performance increased significantly but lag persisted. Added strategy for movement of enemies (very unnecessary but mega cool). Added observer pattern for the game panel so it gets updated when stuff in the game happens (also potential candidate of the lag).">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/CollisionManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GameObserver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/GamePanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/LevelLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/QuadTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Settings/Settings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Coin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Level.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Wall.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/enemyMovement/DiagonalMovementStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/enemyMovement/HorizontalMovementStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/enemyMovement/MovementStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/enemyMovement/VerticalMovementStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/levels/level1.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/levels/level2.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/CollisionManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/CollisionManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GameObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/GameObserver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/LevelLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/LevelLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/QuadTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/game/QuadTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Settings/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/settings/Settings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Level.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,18 +32,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "94025721"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;94025721&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/94025721/AsdJavaGameToTrainMLModel.git",
-    "accountId": "afa96d4c-a7de-431e-b12f-73e09c3ce168"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/94025721/AsdJavaGameToTrainMLModel.git&quot;,
+    &quot;accountId&quot;: &quot;afa96d4c-a7de-431e-b12f-73e09c3ce168&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -70,23 +53,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Game.executor": "Debug",
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Game.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/plusplus/IdeaProjects/GameToTrainMLModel&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -94,14 +78,14 @@
   </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Game" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Game" />
+      <option name="MAIN_CLASS_NAME" value="game.Game" />
       <module name="GameToTrainMLModel" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="game.Main" />
       <module name="GameToTrainMLModel" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -117,8 +101,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
-        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.17011.79" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.17011.79" />
       </set>
     </attachedChunks>
   </component>
@@ -131,8 +115,20 @@
       <option name="presentableId" value="Default" />
       <updated>1716047467886</updated>
       <workItem from="1716047468951" duration="701000" />
-      <workItem from="1716048185702" duration="19552000" />
+      <workItem from="1716048185702" duration="20835000" />
+      <workItem from="1716364129023" duration="170000" />
+      <workItem from="1716718854047" duration="351000" />
+      <workItem from="1716719219777" duration="2175000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial start of the game. Movement of players seem to be laggy. Might has something to do with the update timer of 60 ms. Thought it was performance so I build a Quad Tree for collision; performance increased significantly but lag persisted. Added strategy for movement of enemies (very unnecessary but mega cool). Added observer pattern for the game panel so it gets updated when stuff in the game happens (also potential candidate of the lag).">
+      <option name="closed" value="true" />
+      <created>1716067784257</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1716067784257</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
