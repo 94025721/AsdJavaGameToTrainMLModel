@@ -1,5 +1,7 @@
 package game;
 
+import settings.Settings;
+
 import javax.swing.*;
 
 public class Main {
@@ -15,6 +17,7 @@ public class Main {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
             gamePanel.addKeyListener(game.getPlayer());
+            System.out.println("Game width = " + Settings.getInstance().getGAME_WIDTH() + "\n" + "Game height = " + Settings.getInstance().getGAME_HEIGHT());
         });
     }
 

@@ -6,17 +6,7 @@ import lombok.Getter;
 public class Settings {
 
     private static Settings instance = null;
-    private int gameWidth;
-    private int gameHeight;
-
-    public Settings(int gameWidth, int gameHeight) {
-        this.gameWidth = gameWidth;
-        this.gameHeight = gameHeight;
-    }
-
-    private Settings() {
-        this(800, 600);
-    }
+    private final int GAME_WIDTH = 1000, GAME_HEIGHT = 500;
 
     public static Settings getInstance() {
         if (instance == null) {
@@ -24,5 +14,4 @@ public class Settings {
         }
         return instance;
     }
-
 }

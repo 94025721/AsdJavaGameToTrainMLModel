@@ -7,15 +7,17 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-@Setter
-@Getter
+@Setter @Getter
 public class Player implements KeyListener, Entity {
 
     private int x, y;
+    @Getter
+    private boolean finished = false;
     private int dx, dy;
     private int prevX, prevY;
     private int coinsCollected = 0;
     private int playerDeaths = 0;
+    private final int width = 20, height = 20;
 
     public Player(int x, int y) {
         this.x = x;
@@ -42,13 +44,13 @@ public class Player implements KeyListener, Entity {
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
         if (key == KeyEvent.VK_LEFT) {
-            dx = -10;
+            dx = -2;
         } else if (key == KeyEvent.VK_RIGHT) {
-            dx = 10;
+            dx = 2;
         } else if (key == KeyEvent.VK_UP) {
-            dy = -10;
+            dy = -2;
         } else if (key == KeyEvent.VK_DOWN) {
-            dy = 10;
+            dy = 2;
         }
     }
 
@@ -67,7 +69,7 @@ public class Player implements KeyListener, Entity {
 
     @Override
     public Rectangle getBounds() {
-        return new Rectangle(x, y, 20, 20);
+        return new Rectangle(x, y, width, height);
     }
 
     public void respawn(int x, int y) {

@@ -15,6 +15,11 @@ public class CollisionManager {
                 .filter(wall -> player.getBounds().intersects(wall.getBounds()))
                 .findFirst()
                 .ifPresent(wall -> player.undoMove());
+
+        if (player.getBounds().intersects(currentLevel.getTargetZone().getBounds())) {
+            player.setFinished(true);
+            System.out.println("Player is finished!");
+        }
     }
 
     public void handleEnemyMovement(Player player, Level currentLevel) {
@@ -52,7 +57,7 @@ public class CollisionManager {
     }
 
     private QuadTree buildQuadTree(List<? extends Entity> entities, List<Wall> walls) {
-        QuadTree quadTree = new QuadTree(0, new Rectangle(0, 0, Settings.getInstance().getGameWidth(), Settings.getInstance().getGameHeight()));
+        QuadTree quadTree = new QuadTree(0, new Rectangle(0, 0, Settings.getInstance().getGAME_WIDTH(), Settings.getInstance().getGAME_HEIGHT()));
         entities.forEach(entity -> quadTree.insert(entity.getBounds()));
         if (walls != null) {
             walls.forEach(wall -> quadTree.insert(wall.getBounds()));
@@ -73,4 +78,10 @@ public class CollisionManager {
         player.respawn(currentLevel.getSpawnX(), currentLevel.getSpawnY());
         player.incrementPlayerDeaths();
     }
+
+
+    private void handleSafeZoneCollision(Player player, TargetZone targetZone) {
+        System.out.println("Player has reached the safe zone!");
+    }
+
 }

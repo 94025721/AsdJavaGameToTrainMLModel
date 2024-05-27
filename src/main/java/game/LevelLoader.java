@@ -9,6 +9,7 @@ import entities.enemyMovement.DiagonalMovementStrategy;
 import entities.enemyMovement.HorizontalMovementStrategy;
 import entities.enemyMovement.MovementStrategy;
 import entities.enemyMovement.VerticalMovementStrategy;
+import entities.TargetZone;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -23,6 +24,11 @@ public class LevelLoader {
     public static class EnemyData {
         public int x, y;
         public String movementStrategy;
+        public int speed, moves;
+    }
+
+    public static class TargetZoneData {
+        public int x, y, width, height;
     }
 
     public static class LevelData {
@@ -31,8 +37,8 @@ public class LevelLoader {
         public List<Coin> coins;
         public int spawnX;
         public int spawnY;
+        public TargetZoneData targetZone;
     }
-
 
     public static List<Level> loadAll() throws IOException {
         List<Level> levels = new ArrayList<>();
@@ -52,8 +58,10 @@ public class LevelLoader {
                             Level level = new Level();
                             level.setSpawnX(data.spawnX);
                             level.setSpawnY(data.spawnY);
+                            level.setTargetZone(new TargetZone(data.targetZone.x, data.targetZone.y, data.targetZone.width, data.targetZone.height));
                             for (EnemyData enemyData : data.enemies) {
                                 Enemy enemy = parseEnemyData(enemyData);
+                                System.out.println(enemy.toString());
                                 level.addEnemy(enemy);
                             }
                             for (Wall wall : data.walls) {
@@ -81,6 +89,6 @@ public class LevelLoader {
             case "DiagonalMovementStrategy" -> new DiagonalMovementStrategy();
             default -> throw new IllegalArgumentException("Invalid movement strategy: " + enemyData.movementStrategy);
         };
-        return new Enemy(enemyData.x, enemyData.y, movementStrategy);
+        return new Enemy(enemyData.x, enemyData.y, movementStrategy, enemyData.speed, enemyData.moves);
     }
 }

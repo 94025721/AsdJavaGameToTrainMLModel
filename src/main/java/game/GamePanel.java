@@ -1,5 +1,6 @@
 package game;
 
+import entities.TargetZone;
 import settings.Settings;
 import entities.Coin;
 import entities.Enemy;
@@ -16,7 +17,7 @@ public class GamePanel extends JPanel implements GameObserver {
     private Game game;
 
     public GamePanel() {
-        setPreferredSize(new Dimension(Settings.getInstance().getGameWidth(), Settings.getInstance().getGameHeight()));
+        setPreferredSize(new Dimension(Settings.getInstance().getGAME_WIDTH(), Settings.getInstance().getGAME_HEIGHT()));
         setBackground(Color.WHITE);
         setFocusable(true);
         requestFocusInWindow();
@@ -33,13 +34,17 @@ public class GamePanel extends JPanel implements GameObserver {
         ArrayList<Enemy> enemies = game.getEnemies();
         ArrayList<Wall> walls = game.getWalls();
         ArrayList<Coin> coins = game.getCoins();
+        TargetZone targetZone = game.getTargetZone();
+
+        g.setColor(Color.GREEN);
+        g.fillRect(targetZone.getX(), targetZone.getY(), targetZone.getWidth(), targetZone.getHeight());
 
         g.setColor(Color.RED);
-        g.fillOval(player.getX(), player.getY(), 20, 20);
+        g.fillRect(player.getX(), player.getY(), player.getWidth(), player.getHeight());
 
         g.setColor(Color.BLUE);
         for (Enemy enemy : enemies) {
-            g.fillOval(enemy.getX(), enemy.getY(), 20, 20);
+            g.fillRect(enemy.getX(), enemy.getY(), enemy.getWidth(), enemy.getHeight());
         }
 
         g.setColor(Color.GRAY);
@@ -51,6 +56,7 @@ public class GamePanel extends JPanel implements GameObserver {
         for (Coin coin : coins) {
             g.fillOval(coin.getX(), coin.getY(), 10, 10);
         }
+
     }
 
     @Override

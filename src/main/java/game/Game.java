@@ -1,6 +1,7 @@
 package game;
 
 import entities.*;
+import entities.TargetZone;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,6 +16,7 @@ public class Game implements ActionListener {
     private final Timer timer;
     private final CollisionManager collisionManager;
     private final GameObserver gameObserver;
+    private boolean finished = false;
 
     private final ArrayList<Level> levels = new ArrayList<>();
     private int currentLevelIndex;
@@ -54,6 +56,9 @@ public class Game implements ActionListener {
             collisionManager.handlePlayerMovement(player, levels.get(currentLevelIndex));
             collisionManager.handleEnemyMovement(player, levels.get(currentLevelIndex));
             collisionManager.handleCoinCollection(player, levels.get(currentLevelIndex));
+            if(player.isFinished()) {
+                gameState = GameState.GAME_OVER;
+            }
             gameObserver.update();
         } else if (gameState == GameState.GAME_OVER) {
             timer.stop();
@@ -85,6 +90,14 @@ public class Game implements ActionListener {
 
     public ArrayList<Coin> getCoins() {
         return levels.get(currentLevelIndex).getCoins();
+    }
+
+    public TargetZone getTargetZone() {
+        return levels.get(currentLevelIndex).getTargetZone();
+    }
+
+    public Level getCurrentLevel() {
+        return levels.get(currentLevelIndex);
     }
 
     public enum GameState {

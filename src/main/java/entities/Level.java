@@ -1,6 +1,7 @@
 package entities;
 
 import java.util.ArrayList;
+
 import settings.Settings;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,6 +11,7 @@ public class Level {
     private ArrayList<Coin> coins;
     private ArrayList<Enemy> enemies;
     private ArrayList<Wall> walls;
+    private TargetZone targetZone;
     private int spawnX, spawnY;
 
     public Level() {
@@ -21,33 +23,9 @@ public class Level {
         createSurroundingWalls();
     }
     
-    public Level(int spawnX, int spawnY) {
-        this();
-        this.spawnX = spawnX;
-        this.spawnY = spawnY;
-    }
-    
-    public void addEnemy(Enemy enemy) {
-        enemies.add(enemy);
-    }
-
-    public void removeEnemy(Enemy enemy) {
-        enemies.remove(enemy);
-    }
-
-    public void addWall(Wall wall) {
-        walls.add(wall);
-    }
-
-    public void removeWall(Wall wall) {
-        walls.remove(wall);
-    }
-
     private void createSurroundingWalls() {
-        int gameWidth = Settings.getInstance().getGameWidth();
-        int gameHeight = Settings.getInstance().getGameHeight();
-        System.out.println("gameWidth: " + gameWidth + " gameHeight: " + gameHeight);
-
+        int gameWidth = Settings.getInstance().getGAME_WIDTH();
+        int gameHeight = Settings.getInstance().getGAME_HEIGHT();
 
         walls.add(new Wall(0, 0, gameWidth, 20));
         walls.add(new Wall(0, 0, 20, gameHeight));
@@ -57,5 +35,13 @@ public class Level {
 
     public void addCoin(Coin coin) {
         coins.add(coin);
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void addWall(Wall wall) {
+        walls.add(wall);
     }
 }
