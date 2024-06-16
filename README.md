@@ -4,6 +4,8 @@
 
 This project is a simple Java game designed to test and train machine learning models. It includes various components such as player movement, enemy AI, collision detection, and level progression. The game environment was intended to be used with a Deep Q-Network (DQN) model to train an agent, but the DQN implementation is currently not working as expected.
 
+Due to the persistent issues with the DQN model and performance problems in Java, I have decided to switch the project to Python (can be found [here](https://github.com/plusplus-hub/SimplePyGameToTrainMLModels)). The Python ecosystem offers more robust libraries and frameworks for machine learning and game development, which should facilitate smoother implementation and training.
+
 ## Current Status
 
 ### DQN Model Issues
@@ -11,9 +13,6 @@ The DQN model implementation in this project is not functioning correctly. I sus
 
 ### Performance Challenges
 The game does not run smoothly, which impacts both gameplay and the training process. To address this, I implemented a Quad Tree structure to optimize collision detection and enhance performance. However, this solution did not significantly improve the game's performance.
-
-### Project Transition to Python
-Due to the persistent issues with the DQN model and performance problems in Java, I have decided to switch the project to Python (can be found [here](https://github.com/plusplus-hub/SimplePyGameToTrainMLModels)). The Python ecosystem offers more robust libraries and frameworks for machine learning and game development, which should facilitate smoother implementation and training.
 
 ## Game Components
 
