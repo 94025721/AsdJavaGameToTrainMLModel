@@ -12,7 +12,7 @@ Due to the persistent issues with the DQN model and performance problems in Java
 The DQN model implementation in this project is not functioning correctly. I suspect the problem lies in outdated libraries and unexpected compatibility issues. Despite various troubleshooting attempts, the model fails to train the agent properly.
 
 ### Performance Challenges
-The game does not run smoothly, which impacts both gameplay and the training process. To address this, I implemented a Quad Tree structure to optimize collision detection and enhance performance. However, this solution did not significantly improve the game's performance.
+The game does not run smoothly, which impacts both gameplay and the training process. To address this, I implemented a Quad Tree structure to optimize collision detection and enhance performance. However, this solution did not significantly improve the game's performance. The cause is probably that I am running Intellij with snap which somehow slows down the I/O processes. 
 
 ## Game Components
 
