@@ -13,7 +13,7 @@ The DQN model implementation in this project is not functioning correctly. I sus
 The game does not run smoothly, which impacts both gameplay and the training process. To address this, I implemented a Quad Tree structure to optimize collision detection and enhance performance. However, this solution did not significantly improve the game's performance.
 
 ### Project Transition to Python
-Due to the persistent issues with the DQN model and performance problems in Java, I have decided to switch the project to Python. The Python ecosystem offers more robust libraries and frameworks for machine learning and game development, which should facilitate smoother implementation and training.
+Due to the persistent issues with the DQN model and performance problems in Java, I have decided to switch the project to Python (can be found [here](https://github.com/plusplus-hub/SimplePyGameToTrainMLModels)). The Python ecosystem offers more robust libraries and frameworks for machine learning and game development, which should facilitate smoother implementation and training.
 
 ## Game Components
 
